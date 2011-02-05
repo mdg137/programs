@@ -1,21 +1,19 @@
 #!/usr/bin/python
-
-
-
-
-
+###################################
+import sys
+import json
 import urllib2
+import urllib
+##################################
 variabletarget=raw_input("What language do you want to translate to...: ")
 variablesource=raw_input("What language do you want to Translate from...: ")
-variabletext=raw_input("What words do you want to translate...(put %20 instead of spaces between words...): ")
+##################################
 key="AIzaSyDOq5348qab8-5UfwxXfiUdqnutGILyn4s"
-url='https://www.googleapis.com/language/translate/v2?key='+key+'&q='+variabletext+'&source='+variablesource+'&target='+variabletarget
-
+##################################
+url='https://www.googleapis.com/language/translate/v2?key='+key+'&q='+urllib.quote(sys.argv[1])+'&source='+variablesource+'&target='+variabletarget
+##################################
 handle=urllib2.urlopen(url)
-
-
-print handle
-
 readhandle=handle.read()
+print (json.loads(readhandle))["data"]["translations"][0]["translatedText"] 
 handle.close()
-print readhandle
+#################################
