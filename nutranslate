@@ -1,0 +1,21 @@
+#!/usr/bin/python
+
+
+
+
+
+import urllib2
+variabletarget=raw_input("What language do you want to translate to...: ")
+variablesource=raw_input("What language do you want to Translate from...: ")
+variabletext=raw_input("What words do you want to translate...(put %20 instead of spaces between words...): ")
+key="AIzaSyDOq5348qab8-5UfwxXfiUdqnutGILyn4s"
+url='https://www.googleapis.com/language/translate/v2?key='+key+'&q='+variabletext+'&source='+variablesource+'&target='+variabletarget
+
+handle=urllib2.urlopen(url)
+
+
+print handle
+
+readhandle=handle.read()
+handle.close()
+print readhandle
