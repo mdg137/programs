@@ -1,0 +1,30 @@
+#!/usr/bin/python 
+
+import sys
+import random
+nuinput=sys.argv[1]
+print nuinput
+
+
+if sys.argv[1]=="square":
+    print "4"
+if sys.argv[1]=="triangle":
+    print "3"
+if sys.argv[1]=="circle":
+    print "1"
+
+lovehateinput=int(raw_input("rate this program on scale of one to ten: "))
+if lovehateinput>5:
+    print "Great! Glad you like it!"
+    sys.exit(0)
+if lovehateinput<5:
+    print "I don't need your criticism!!!"
+    
+randominput=random.randint(1,1000)
+while True:
+    guess=int(raw_input("guess nao: "))
+    if guess==randominput:
+        print "damn"
+        break
+    if guess!=randominput:
+        print "HAHA! Guess again!"
