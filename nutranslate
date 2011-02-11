@@ -4,13 +4,16 @@ import sys
 import json
 import urllib2
 import urllib
-##################################
-variabletarget=raw_input("What language do you want to translate to...: ")
-variablesource=raw_input("What language do you want to Translate from...: ")
+import argparse
+kitten=argparse.ArgumentParser(description="translator")
+kitten.add_argument('--from', action="store", type=str, default='en', dest='fromlang')
+kitten.add_argument('--to', action="store", type=str, default='fr', dest='tolang')
+kitten.add_argument('text', action="store", type=str)
+wuvs=kitten.parse_args()
 ##################################
 key="AIzaSyDOq5348qab8-5UfwxXfiUdqnutGILyn4s"
 ##################################
-url='https://www.googleapis.com/language/translate/v2?key='+key+'&q='+urllib.quote(sys.argv[1])+'&source='+variablesource+'&target='+variabletarget
+url='https://www.googleapis.com/language/translate/v2?key='+key+'&q='+urllib.quote(wuvs.text)+'&source='+wuvs.fromlang+'&target='+wuvs.tolang
 ##################################
 handle=urllib2.urlopen(url)
 readhandle=handle.read()
